@@ -20,10 +20,10 @@ class UserRead(UserBase):
     user_id: str = str(uuid4())
 
 class UserUpdate(BaseModel):
-    profile_picture: str | None = None
-    phone_number: str | None = None
-    DOB: date | None = None
-    role: str | None = None
+    profile_picture: str 
+    phone_number: str 
+    DOB: date
+    role: str
 
     class Config:
         from_attributes = True

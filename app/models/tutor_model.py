@@ -24,15 +24,15 @@ class TutorProfileRead(TutorProfileBase):
     tutor_profile_id: str = str(uuid4())
 
 class TutorProfileUpdate(BaseModel):
-    profile_picture: str | None = None
-    bio: str | None = None
-    experience_years: int | None = None
-    ratings_average: float | None = None
-    total_reviews: int | None = None
-    hourly_rate: float | None = None
-    teaching_style: str | None = None
-    verification_status: bool | None = None
-    active_status: bool | None = None
+    profile_picture: str
+    bio: str
+    experience_years: int
+    ratings_average: float
+    total_reviews: int
+    hourly_rate: float
+    teaching_style: str
+    verification_status: bool
+    active_status: bool
     
     class Config:
         from_attributes = True
@@ -54,10 +54,10 @@ class TutorQualificationRead(TutorQualificationBase):
     
 
 class TutorQualificationUpdate(BaseModel):
-    qualification: str | None = None
-    institution: str | None = None
-    completion_year: date | None = None
-    verified: bool | None = None
+    qualification: str
+    institution: str
+    completion_year: date
+    verified: bool
     
     class Config:
         from_attributes = True
@@ -79,9 +79,9 @@ class TutorAvailabilityRead(TutorAvailabilityBase):
     
     
 class TutorAvailabilityUpdate(BaseModel):
-    day: str | None = None
-    start_time: date | None = None
-    end_time: date | None = None
+    day: str
+    start_time: date
+    end_time: date
     
     class Config:
         from_attributes = True
@@ -103,9 +103,9 @@ class TutorSubjectRead(TutorSubjectBase):
     
     
 class TutorSubjectUpdate(BaseModel):
-    subject: str | None = None
-    level: str | None = None
-    price: float | None = None
+    subject: str
+    level: str
+    price: float
     
     class Config:
         from_attributes = True

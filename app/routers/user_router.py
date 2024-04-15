@@ -5,6 +5,7 @@ from app.models.user_model import UserCreate, UserRead
 from app.dependencies import get_db
 from app.services.user_service import UserService
 from app.database.schemas.user_schema import User
+from typing import List
 
 
 router = APIRouter()
@@ -23,7 +24,7 @@ def read_user(user_id: str, db: Session = Depends(get_db)):
     return service.read(db, user_id)
 
 
-@router.get("/users", response_model=list[UserRead])
+@router.get("/users", response_model=List[UserRead])
 def read_all_users(
     db: Session = Depends(get_db),
     skip: int = 0,

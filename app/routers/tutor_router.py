@@ -1,3 +1,4 @@
+from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.models.tutor_model import (
@@ -22,6 +23,7 @@ from app.database.schemas.tutor_schema import (
     TutorAvailability,
     TutorSubject,
 )
+from typing import List
 
 
 router = APIRouter()
@@ -43,7 +45,7 @@ def read_tutor_profile(tutor_id: str, db: Session = Depends(get_db)):
     return profile_service.read(db, tutor_id)
 
 
-@router.get("/tutors", response_model=list[TutorProfileRead])
+@router.get("/tutors", response_model=List[TutorProfileRead])
 def read_all_tutors(
     db: Session = Depends(get_db),
     skip: int = 0,
@@ -96,7 +98,7 @@ def read_tutor_qualification(tutor_id: str, qualification_id: str, db: Session =
     return qualification_service.read(db, qualification_id)
 
 
-@router.get("/tutors/{tutor_id}/qualifications", response_model=list[TutorQualificationRead])
+@router.get("/tutors/{tutor_id}/qualifications", response_model=List[TutorQualificationRead])
 def read_all_tutor_qualifications(tutor_id: str, db: Session = Depends(get_db)):
     """Read all tutor qualifications"""
     return qualification_service.read_all(db, tutor_id)
@@ -126,7 +128,7 @@ def read_tutor_availability(tutor_id: str, availability_id: str, db: Session = D
     return availability_service.read(db, availability_id)
 
 
-@router.get("/tutors/{tutor_id}/availability", response_model=list[TutorAvailabilityRead])
+@router.get("/tutors/{tutor_id}/availability", response_model=List[TutorAvailabilityRead])
 def read_all_tutor_availability(tutor_id: str, db: Session = Depends(get_db)):
     """Read all tutor availability"""
     return availability_service.read_all(db, tutor_id)
@@ -156,7 +158,7 @@ def read_tutor_subject(tutor_id: str, subject_id: str, db: Session = Depends(get
     return subject_service.read(db, subject_id)
 
 
-@router.get("/tutors/{tutor_id}/subjects", response_model=list[TutorSubjectRead])
+@router.get("/tutors/{tutor_id}/subjects", response_model=List[TutorSubjectRead])
 def read_all_tutor_subjects(tutor_id: str, db: Session = Depends(get_db)):
     """Read all tutor subjects"""
     return subject_service.read_all(db, tutor_id)
