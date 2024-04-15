@@ -1,37 +1,15 @@
 from app.database.crud.base import CRUDBase
+
+# users
 from app.database.schemas.user_schema import User
 from app.models.user_model import UserCreate, UserUpdate
 
-from app.database.schemas.tutor_schema import (
-    TutorProfile,
-    TutorAvailability,
-    TutorQualification,
-    TutorSubject,
-)
-from app.models.tutor_model import TutorProfileUpdate, TutorProfileCreate
-from app.models.tutor_model import (
-    TutorQualificationCreate,
-    TutorQualificationUpdate,
-    TutorAvailabilityCreate,
-    TutorAvailabilityUpdate,
-    TutorSubjectCreate,
-    TutorSubjectUpdate,
-)
+# messages
+from app.database.schemas.message_schema import Message
+from app.models.message_model import MessageCreate, MessageUpdate
+
+
 
 user = CRUDBase[User, UserCreate, UserUpdate](User)
 
-tutor_profile = CRUDBase[TutorProfile, TutorProfileCreate, TutorProfileUpdate](
-    TutorProfile
-)
-
-tutor_qualification = CRUDBase[
-    TutorQualification, TutorQualificationCreate, TutorQualificationUpdate
-](TutorQualification)
-
-tutor_availability = CRUDBase[
-    TutorAvailability, TutorAvailabilityCreate, TutorAvailabilityUpdate
-](TutorAvailability)
-
-tutor_subject = CRUDBase[TutorSubject, TutorSubjectCreate, TutorSubjectUpdate](
-    TutorSubject
-)
+message = CRUDBase[Message, MessageCreate, MessageUpdate](Message)
